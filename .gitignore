@@ -1,0 +1,500 @@
+# AI Engineering Toolkit - .gitignore
+
+# ==============================================
+# Environment and Configuration
+# ==============================================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+config/secrets.yml
+config/master.key
+
+# ==============================================
+# Python
+# ==============================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# pdm
+.pdm.toml
+
+# PEP 582
+__pypackages__/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# ==============================================
+# Machine Learning & AI
+# ==============================================
+
+# Model files
+*.pth
+*.pkl
+*.joblib
+*.h5
+*.onnx
+*.pb
+*.tflite
+models/
+checkpoints/
+saved_models/
+
+# Data files
+data/raw/
+data/processed/
+data/external/
+*.csv
+*.parquet
+*.feather
+*.hdf5
+*.npz
+
+# MLflow
+mlruns/
+.mlflow/
+
+# Weights & Biases
+wandb/
+
+# Tensorboard logs
+logs/
+runs/
+
+# Jupyter notebooks output
+*-checkpoint.ipynb
+
+# Vector databases
+chromadb/
+vectorstore/
+embeddings/
+index/
+
+# Cache directories
+.cache/
+cache/
+
+# ==============================================
+# Node.js (for frontend tools)
+# ==============================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Grunt intermediate storage
+.grunt
+
+# Bower dependency directory
+bower_components
+
+# node-waf configuration
+.lock-wscript
+
+# Compiled binary addons
+build/Release
+
+# Dependency directories
+jspm_packages/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache
+.parcel-cache
+
+# Next.js build output
+.next
+out
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Gatsby files
+.cache/
+public
+
+# Storybook build outputs
+.out
+.storybook-out
+storybook-static
+
+# Temporary folders
+tmp/
+temp/
+
+# ==============================================
+# Database
+# ==============================================
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-wal
+*.db-shm
+
+# PostgreSQL
+postgresql/
+
+# Redis
+dump.rdb
+
+# ==============================================
+# Logs
+# ==============================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# ==============================================
+# Operating System
+# ==============================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+
+# ==============================================
+# IDEs and Editors
+# ==============================================
+
+# Visual Studio Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+# JetBrains IDEs
+.idea/
+*.swp
+*.swo
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ==============================================
+# Newsletter & Content
+# ==============================================
+
+# Generated newsletters
+newsletters/generated/
+output/
+exports/
+
+# Draft content
+drafts/
+*.draft
+
+# Subscriber data
+subscribers/
+subscriber_lists/
+*.csv
+
+# Analytics reports
+reports/
+analytics/
+
+# Social media cache
+social_cache/
+
+# Content cache
+content_cache/
+
+# ==============================================
+# Cloud & Deployment
+# ==============================================
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# Kubernetes
+*.kubeconfig
+
+# Docker
+.docker/
+
+# AWS
+.aws/
+
+# Google Cloud
+.gcloud/
+gcp-credentials.json
+
+# Azure
+.azure/
+
+# ==============================================
+# Backup and Temporary Files
+# ==============================================
+
+# Backups
+*.bak
+*.backup
+*.tmp
+*.temp
+
+# Compressed files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# ==============================================
+# Newsletter Specific
+# ==============================================
+
+# Email templates (generated)
+templates/generated/
+
+# Scheduled content
+scheduled/
+
+# A/B test data
+ab_tests/
+
+# Performance metrics
+metrics/
+
+# API response cache
+api_cache/
+
+# Image processing cache
+image_cache/
+
+# ==============================================
+# Security
+# ==============================================
+
+# API keys and secrets
+*.pem
+*.key
+*.crt
+*.p12
+*.keystore
+secrets/
+
+# OAuth tokens
+tokens/
+
+# Certificate files
+certificates/
+
+# ==============================================
+# Personal and Custom
+# ==============================================
+
+# Personal notes
+notes/
+personal/
+todo.txt
+TODO.md
+
+# Custom scripts (that shouldn't be shared)
+scripts/personal/
+
+# Local configuration
+local_config/
+
+# Test data
+test_data/
+mock_data/
