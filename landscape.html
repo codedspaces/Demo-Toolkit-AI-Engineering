@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Engineering Toolkit Landscape</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0d1117 0%, #1a1a1a 100%);
+            color: #e6edf3;
+            min-height: 100vh;
+            overflow-x: auto;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(13, 17, 23, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2rem;
+            color: #8b949e;
+            margin-bottom: 30px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: rgba(139, 148, 158, 0.1);
+            color: #e6edf3;
+            border: 1px solid #30363d;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .category-section {
+            margin-bottom: 60px;
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-left: 20px;
+        }
+        
+        .category-label {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #8b949e;
+            margin-right: 30px;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .category-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #e6edf3;
+            margin-bottom: 10px;
+        }
+        
+        .category-description {
+            color: #8b949e;
+            font-size: 1rem;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding-left: 80px;
+        }
+        
+        .tool-card {
+            background: rgba(22, 27, 34, 0.8);
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .tool-card:hover::before {
+            opacity: 1;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            border-color: #58a6ff;
+            box-shadow: 0 10px 30px rgba(88, 166, 255, 0.1);
+        }
+        
+        .tool-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .tool-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #e6edf3;
+            margin-bottom: 8px;
+        }
+        
+        .tool-description {
+            font-size: 0.9rem;
+            color: #8b949e;
+            line-height: 1.4;
+        }
+        
+        .tool-link {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #58a6ff;
+        }
+        
+        .stat-label {
+            color: #8b949e;
+            font-size: 0.9rem;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #8b949e;
+            border-top: 1px solid #30363d;
+            margin-top: 60px;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tools-grid {
+                padding-left: 0;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+            
+            .category-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .category-label {
+                writing-mode: horizontal-tb;
+                margin-right: 0;
+                margin-bottom: 20px;
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>AI Engineering Toolkit</h1>
+        <p class="subtitle">A curated landscape of the most useful AI engineering tools</p>
+        <div class="action-buttons">
+            <a href="https://github.com/yourusername/ai-toolkit" class="btn btn-primary">⭐ View on GitHub</a>
+            <a href="#" class="btn btn-secondary">📝 Submit new tool</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">25+</div>
+                <div class="stat-label">AI Tools</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Categories</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Open Source</div>
+            </div>
+        </div>
+
+        <section class="category-section">
+            <div class="category-header">
+                <div class="category-label">CODING</div>
+                <div>
+                    <h2 class="category-title">🛠️ Coding Agents</h2>
+                    <p class="category-description">AI-powered coding assistants and development tools</p>
+                </div>
+            </div>
+            <div class="tools-grid">
+                <a href="https://github.com/KillianLucas/open-interpreter" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">OI</div>
+                        <div class="tool-name">Open Interpreter</div>
+                        <div class="tool-description">Run code with natural language commands in your terminal</div>
+                    </div>
+                </a>
+                <a href="https://github.com/continuedev/continue" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">C</div>
+                        <div class="tool-name">Continue</div>
+                        <div class="tool-description">AI pair programmer for VS Code and JetBrains</div>
+                    </div>
+                </a>
+                <a href="https://github.com/irgolic/AutoPR" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">PR</div>
+                        <div class="tool-name">AutoPR</div>
+                        <div class="tool-description">AI tool to automatically generate pull requests</div>
+                    </div>
+                </a>
+                <a href="https://www.cursor.sh/" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">⚡</div>
+                        <div class="tool-name">Cursor</div>
+                        <div class="tool-description">AI-first code editor built for productivity</div>
+                    </div>
+                </a>
+                <a href="https://github.com/paul-gauthier/aider" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">AI</div>
+                        <div class="tool-name">Aider</div>
+                        <div class="tool-description">AI pair programming in your terminal</div>
+                    </div>
+                </a>
+                <a href="https://github.com/smol-ai/developer" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">SM</div>
+                        <div class="tool-name">Smol Developer</div>
+                        <div class="tool-description">Your own junior developer assistant</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="category-section">
+            <div class="category-header">
+                <div class="category-label">SEARCH & RAG</div>
+                <div>
+                    <h2 class="category-title">📊 RAG / Search Frameworks</h2>
+                    <p class="category-description">Retrieval-augmented generation and search tools</p>
+                </div>
+            </div>
+            <div class="tools-grid">
+                <a href="https://github.com/jerryjliu/llama_index" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">🦙</div>
+                        <div class="tool-name">LlamaIndex</div>
+                        <div class="tool-description">Data framework for LLM applications</div>
+                    </div>
+                </a>
+                <a href="https://github.com/langchain-ai/langchain" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">🦜</div>
+                        <div class="tool-name">LangChain</div>
+                        <div class="tool-description">Framework for developing LLM applications</div>
+                    </div>
+                </a>
+                <a href="https://github.com/firecrawl/firecrawl" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">🔥</div>
+                        <div class="tool-name">Firecrawl</div>
+                        <div class="tool-description">Web crawling and parsing API for RAG</div>
+                    </div>
+                </a>
+                <a href="https://github.com/chroma-core/chroma" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">🌈</div>
+                        <div class="tool-name">Chroma</div>
+                        <div class="tool-description">Open-source embedding database</div>
+                    </div>
+                </a>
+                <a href="https://github.com/weaviate/weaviate" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">W</div>
+                        <div class="tool-name">Weaviate</div>
+                        <div class="tool-description">Vector database for AI applications</div>
+                    </div>
+                </a>
+                <a href="https://github.com/qdrant/qdrant" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">Q</div>
+                        <div class="tool-name">Qdrant</div>
+                        <div class="tool-description">Vector similarity search engine</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="category-section">
+            <div class="category-header">
+                <div class="category-label">AGENTS</div>
+                <div>
+                    <h2 class="category-title">🧩 Agent Frameworks</h2>
+                    <p class="category-description">Frameworks for building autonomous AI agents</p>
+                </div>
+            </div>
+            <div class="tools-grid">
+                <a href="https://github.com/homanp/superagent" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">🦸</div>
+                        <div class="tool-name">Superagent</div>
+                        <div class="tool-description">Plug-and-play LLM agents framework</div>
+                    </div>
+                </a>
+                <a href="https://github.com/joaomdmoura/crewAI" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">👥</div>
+                        <div class="tool-name">CrewAI</div>
+                        <div class="tool-description">Multi-agent collaboration framework</div>
+                    </div>
+                </a>
+                <a href="https://github.com/Torantulino/Auto-GPT" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">🤖</div>
+                        <div class="tool-name">AutoGPT</div>
+                        <div class="tool-description">Autonomous GPT-4 experiments</div>
+                    </div>
+                </a>
+                <a href="https://github.com/agnostack/agno" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">AG</div>
+                        <div class="tool-name">Agno</div>
+                        <div class="tool-description">Local orchestration for AI agents</div>
+                    </div>
+                </a>
+                <a href="https://github.com/microsoft/autogen" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">🔄</div>
+                        <div class="tool-name">AutoGen</div>
+                        <div class="tool-description">Multi-agent conversation framework</div>
+                    </div>
+                </a>
+                <a href="https://github.com/SciPhi-AI/agent-search" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">🔍</div>
+                        <div class="tool-name">Agent Search</div>
+                        <div class="tool-description">AI agent for web search and research</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="category-section">
+            <div class="category-header">
+                <div class="category-label">MODELS</div>
+                <div>
+                    <h2 class="category-title">🧠 Local Models & Inference</h2>
+                    <p class="category-description">Tools for running AI models locally</p>
+                </div>
+            </div>
+            <div class="tools-grid">
+                <a href="https://ollama.com" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">🦙</div>
+                        <div class="tool-name">Ollama</div>
+                        <div class="tool-description">Run large language models locally</div>
+                    </div>
+                </a>
+                <a href="https://github.com/ggerganov/llama.cpp" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">C++</div>
+                        <div class="tool-name">llama.cpp</div>
+                        <div class="tool-description">Inference of LLaMA models in pure C/C++</div>
+                    </div>
+                </a>
+                <a href="https://github.com/lm-sys/FastChat" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">💬</div>
+                        <div class="tool-name">FastChat</div>
+                        <div class="tool-description">Open platform for training, serving, and evaluating LLMs</div>
+                    </div>
+                </a>
+                <a href="https://github.com/vllm-project/vllm" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">⚡</div>
+                        <div class="tool-name">vLLM</div>
+                        <div class="tool-description">Fast and easy-to-use library for LLM inference</div>
+                    </div>
+                </a>
+                <a href="https://github.com/huggingface/transformers" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">🤗</div>
+                        <div class="tool-name">Transformers</div>
+                        <div class="tool-description">State-of-the-art ML models for NLP</div>
+                    </div>
+                </a>
+                <a href="https://github.com/mlc-ai/mlc-llm" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">MLC</div>
+                        <div class="tool-name">MLC LLM</div>
+                        <div class="tool-description">Universal deployment solution for LLMs</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="category-section">
+            <div class="category-header">
+                <div class="category-label">AUTOMATION</div>
+                <div>
+                    <h2 class="category-title">⚙️ Automation & Workflows</h2>
+                    <p class="category-description">Tools for automating tasks and workflows</p>
+                </div>
+            </div>
+            <div class="tools-grid">
+                <a href="https://github.com/Significant-Gravitas/AutoGPT" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">🔄</div>
+                        <div class="tool-name">AutoGPT</div>
+                        <div class="tool-description">Autonomous task execution with GPT-4</div>
+                    </div>
+                </a>
+                <a href="https://github.com/geekan/MetaGPT" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">🎭</div>
+                        <div class="tool-name">MetaGPT</div>
+                        <div class="tool-description">Multi-agent framework for software development</div>
+                    </div>
+                </a>
+                <a href="https://github.com/microsoft/TaskWeaver" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">🕸️</div>
+                        <div class="tool-name">TaskWeaver</div>
+                        <div class="tool-description">Code-first agent framework for seamless planning</div>
+                    </div>
+                </a>
+                <a href="https://github.com/langflow-ai/langflow" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">🌊</div>
+                        <div class="tool-name">Langflow</div>
+                        <div class="tool-description">Visual framework for building AI applications</div>
+                    </div>
+                </a>
+                <a href="https://github.com/PrefectHQ/prefect" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">📊</div>
+                        <div class="tool-name">Prefect</div>
+                        <div class="tool-description">Modern workflow orchestration framework</div>
+                    </div>
+                </a>
+                <a href="#newsletter-automation" class="tool-link">
+                    <div class="tool-card">
+                        <div class="tool-logo">📧</div>
+                        <div class="tool-name">Newsletter Automation</div>
+                        <div class="tool-description">AI-powered newsletter content generation</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="category-section">
+            <div class="category-header">
+                <div class="category-label">DEVELOPMENT</div>
+                <div>
+                    <h2 class="category-title">🛠️ Development Tools</h2>
+                    <p class="category-description">Essential tools for AI development and deployment</p>
+                </div>
+            </div>
+            <div class="tools-grid">
+                <a href="https://github.com/openai/openai-python" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">🔑</div>
+                        <div class="tool-name">OpenAI Python</div>
+                        <div class="tool-description">Official Python library for OpenAI API</div>
+                    </div>
+                </a>
+                <a href="https://github.com/anthropics/anthropic-sdk-python" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">🎯</div>
+                        <div class="tool-name">Anthropic SDK</div>
+                        <div class="tool-description">Python SDK for Claude AI models</div>
+                    </div>
+                </a>
+                <a href="https://github.com/wandb/wandb" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">📈</div>
+                        <div class="tool-name">Weights & Biases</div>
+                        <div class="tool-description">Experiment tracking and model versioning</div>
+                    </div>
+                </a>
+                <a href="https://github.com/gradio-app/gradio" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">📱</div>
+                        <div class="tool-name">Gradio</div>
+                        <div class="tool-description">Build and share ML apps instantly</div>
+                    </div>
+                </a>
+                <a href="https://github.com/streamlit/streamlit" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">🚀</div>
+                        <div class="tool-name">Streamlit</div>
+                        <div class="tool-description">Turn data scripts into shareable web apps</div>
+                    </div>
+                </a>
+                <a href="https://github.com/Lightning-AI/lightning" class="tool-link" target="_blank">
+                    <div class="tool-card">
+                        <div class="tool-logo">⚡</div>
+                        <div class="tool-name">PyTorch Lightning</div>
+                        <div class="tool-description">Framework for high-performance AI research</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p>Made with ❤️ for the AI engineering community</p>
+        <p>Inspired by <a href="https://landscape.e2b.dev" style="color: #58a6ff;">E2B.dev's AI Agents Landscape</a></p>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add loading animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Add tool card click analytics (placeholder)
+        document.querySelectorAll('.tool-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const toolName = this.querySelector('.tool-name').textContent;
+                console.log(`Clicked on ${toolName}`);
+                // Add your analytics tracking here
+            });
+        });
+    </script>
+</body>
+</html>

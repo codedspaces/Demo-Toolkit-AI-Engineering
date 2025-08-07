@@ -1,0 +1,10 @@
+title: AI Engineering Toolkit
+description: A curated landscape of the most useful AI engineering tools
+theme: jekyll-theme-minimal
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: true
+include:
+  - landscape.html

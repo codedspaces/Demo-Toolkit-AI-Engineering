@@ -4,6 +4,10 @@ A curated landscape of the most useful AI engineering tools, categorized by use 
 
 > Inspired by E2B.dev's AI Agents Landscape
 
+## 🎨 [View Interactive Landscape](landscape.html)
+
+Experience the full toolkit in a beautiful, interactive visualization similar to E2B's AI Agents Landscape.
+
 ---
 
 ## 🛠️ Coding Agents (Open Source)
